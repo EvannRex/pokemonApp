@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Pokémons</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pagina" padding>
+  <ion-menu side="left" [content]="content">
+      <ion-header>
+          <ion-toolbar>
+          <ion-title>Menu</ion-title>
+          </ion-toolbar>
+      </ion-header>
+      <ion-content padding>
+          <ion-list>
+          <button ion-item >Pokémons</button>
+          <button ion-item (click)="goHome()">Salir</button>
+          </ion-list>
+      </ion-content>
+  </ion-menu>
+  <ion-nav #content></ion-nav>
+  <ion-content class="lista">
+  <ion-list>
+    <ion-item *ngFor="let poke of pokemons">
+      <ion-avatar item-start>
+        <!--<img [attr.src]="getImagen(poke.url)">-->
+      </ion-avatar>
+      <h2>{{poke.name}}</h2>
+      <p>{{poke.url}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+</ion-content>
