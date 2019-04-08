@@ -7,9 +7,9 @@ export class PokemonProvider {
   constructor(private http: HttpClient) {
   }
   getAllPokemons(){
-    return this.http.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=200');
+    return this.http.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=151')
   }
   getImgUrl(url: string){
-    return this.http.get(url);
+    return this.http.get(url)
   }
 }

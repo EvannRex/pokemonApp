@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PokemonProvider} from '../../providers/pokemon/pokemon';
+import { PokemonProvider } from '../../providers/pokemon/pokemon';
 
 
 @IonicPage()
@@ -10,42 +10,51 @@ import { PokemonProvider} from '../../providers/pokemon/pokemon';
 })
 export class PrincipalPage {
 
-  pokemons: any= new Array;
+  pokemons: any = new Array;
   pokeImages: any = new Array();
-  imagen: any;
+  imagen: string;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private pokemonProvider: PokemonProvider) {
-    //llenado de arreglo pokemons
-    this.pokemonProvider.getAllPokemons()
-    .subscribe(
-      (response:any)=>{this.pokemons= response['results'];
-      console.log(this.pokemons);
-      this.pokemons.forEach(element => {
-        this.pokemonProvider.getImgUrl(element.url).subscribe(
-          (response: any)=>{
-            this.imagen= response.sprites.front_default;
-            this.pokeImages.push(this.imagen);
-          },(error)=>{
-            console.log(error);
-          });
-      });
-      console.log(this.pokeImages);
-     }
-      ,(error) =>{
-        console.log(error);
-    })
-    //llenado de arreglo de pokeImages
-    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrincipalPage');
+    this.getAllPokemons();
   }
 
-  goHome(){
+  goHome() {
     this.navCtrl.popToRoot();
+  }
+  getAllPokemons() {
+    this.pokemonProvider.getAllPokemons()
+      .subscribe(
+        (response: any) => {
+          this.pokemons = response['results'];
+          
+          // this.pokemons.map(pokemon =>{
+          //   this.getImagen(pokemon.url);
+          // });
+          this.getImagen(0);
+          console.log("nombres",this.pokemons);
+          console.log("imagenes",this.pokeImages);
+        }
+        , (error) => {
+          console.log(error);
+        })
+  }
+
+  getImagen(index:number) {
+      this.pokemonProvider.getImgUrl(this.pokemons[index].url).subscribe(
+        (response: any) => {
+          this.pokeImages.push(response.sprites.front_default);
+          if(index < this.pokemons.length-1){
+            this.getImagen(++index);
+          }
+        }, (error) => {
+          console.log(error);
+        })
   }
 
 }

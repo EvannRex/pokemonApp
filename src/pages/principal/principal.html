@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons start>
@@ -12,28 +11,27 @@
 
 <ion-content class="pagina" padding>
   <ion-menu side="left" [content]="content">
-      <ion-header>
-          <ion-toolbar>
-          <ion-title>Menu</ion-title>
-          </ion-toolbar>
-      </ion-header>
-      <ion-content padding>
-          <ion-list>
-          <button ion-item >Pokémons</button>
-          <button ion-item (click)="goHome()">Salir</button>
-          </ion-list>
-      </ion-content>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content padding>
+      <ion-list>
+        <button ion-item>Pokémons</button>
+        <button ion-item (click)="goHome()">Salir</button>
+      </ion-list>
+    </ion-content>
   </ion-menu>
   <ion-nav #content></ion-nav>
-  <ion-content class="lista">
+
   <ion-list>
-    <ion-item *ngFor="let poke of pokemons">
+    <ion-item *ngFor="let poke of pokemons, let i=index">
       <ion-avatar item-start>
-        <!--<img [attr.src]="getImagen(poke.url)">-->
+        <img [attr.src]=pokeImages[i]>
       </ion-avatar>
       <h2>{{poke.name}}</h2>
-      <p>{{poke.url}}</p>
+      <p>{{i}}</p>
     </ion-item>
   </ion-list>
-</ion-content>
 </ion-content>
