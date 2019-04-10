@@ -5,33 +5,18 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Pokémons</ion-title>
+    <ion-title>{{generacion.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="pagina" padding>
-  <ion-menu side="left" [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content padding>
-      <ion-list>
-        <button ion-item>Pokémons</button>
-        <button ion-item (click)="goHome()">Salir</button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-nav #content></ion-nav>
 
   <ion-list>
-    <ion-item *ngFor="let poke of pokemons, let i=index">
+    <ion-item *ngFor="let poke of pokemons, let i=index" (click)="goPokemon(poke)">
       <ion-avatar item-start>
         <img [attr.src]=pokeImages[i]>
       </ion-avatar>
-      <h2>{{poke.name}}</h2>
-      <p>{{i}}</p>
+      <h2>#{{i+indice+1}} {{poke.name}}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

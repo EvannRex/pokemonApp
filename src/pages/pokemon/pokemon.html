@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="pagina">
+    <ion-card>
+        <img [attr.src]=imagen/>
+        <ion-card-content>
+          <ion-card-title class="encabezado">{{pokemon.name}}</ion-card-title>
+          <h1>Tipos:</h1>
+          <h1 *ngFor="let tipo of tipos">- {{tipo.type.name}}</h1>
+          <h1>Peso: {{peso}}00 g</h1>
+          <h1>Altura: {{altura}}0 cm</h1>
+        </ion-card-content>
+      </ion-card>
+</ion-content>

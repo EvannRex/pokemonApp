@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal';
-
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController,menu: MenuController) {
-      menu.enable(true);
+  
+  constructor(public navCtrl: NavController) {
+      
   }
   goPrincipal(){
-    this.navCtrl.push(PrincipalPage);
+    var page: any={ title: 'Primera Generación', component: 1 };
+    this.navCtrl.setRoot(PrincipalPage,{page});
   }
 }
