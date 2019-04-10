@@ -5,14 +5,21 @@
 </ion-header>
 
 <ion-content padding class="pagina">
-    <ion-card>
+    <ion-card >
         <img [attr.src]=imagen/>
         <ion-card-content>
           <ion-card-title class="encabezado">{{pokemon.name}}</ion-card-title>
-          <h1>Tipos:</h1>
-          <h1 *ngFor="let tipo of tipos">- {{tipo.type.name}}</h1>
-          <h1>Peso: {{peso}}00 g</h1>
-          <h1>Altura: {{altura}}0 cm</h1>
+            <ion-list>
+              <ion-list-header class="texto">Tipo(s)</ion-list-header>
+              <ion-item class="tipos" *ngFor="let tipo of tipos"><ion-icon name="arrow-dropright"></ion-icon> {{tipo.type.name}}</ion-item>
+              <ion-list-header class="texto">Debil contra</ion-list-header>
+              <ion-item class="tipos" *ngFor="let debilidad of debilidades">*{{debilidad.name}}</ion-item>
+              <ion-list-header class="texto">Fuerte contra</ion-list-header>
+              <ion-item class="tipos" *ngFor="let fortaleza of fortalezas">*{{fortaleza.name}}</ion-item>
+              <ion-list-header class="texto">Caracteristicas</ion-list-header>
+              <ion-item class="texto"><ion-icon name="arrow-dropright"></ion-icon> Peso: {{peso}}00 g</ion-item>
+              <ion-item class="texto"><ion-icon name="arrow-dropright"></ion-icon> Altura: {{altura}}0 cm</ion-item>
+            </ion-list>
         </ion-card-content>
       </ion-card>
 </ion-content>

@@ -6,4 +6,22 @@ page-pokemon {
         text-transform: capitalize;
         font-weight: bolder;
     }
+    .tipos{
+        font-size: 20px;
+        text-transform: capitalize;
+    }
+    .texto{
+        font-size: 20px;
+    }
+    .label-md {
+        margin: 0 0 0 0;
+    }
+    .list-header-md {
+        padding-left: 16px;
+        margin-bottom: 5px;
+        min-height: 4.5rem;
+        border-top: 1px solid #dedede;
+        font-size: 20px;
+        color: #757575;
+    }
 }
