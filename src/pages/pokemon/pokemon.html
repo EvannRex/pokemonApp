@@ -1,25 +1,48 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Detalles</ion-title>
+    <ion-title class="encabezado">{{pokemon.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="pagina">
     <ion-card >
+      <div *ngIf="!showShiny">
+        <ion-card-title class="encabezado">&nbsp;&nbsp;&nbsp;Forma normal</ion-card-title>
         <img [attr.src]=imagen/>
-        <ion-card-content>
-          <ion-card-title class="encabezado">{{pokemon.name}}</ion-card-title>
-            <ion-list>
-              <ion-list-header class="texto">Tipo(s)</ion-list-header>
-              <ion-item class="tipos" *ngFor="let tipo of tipos"><ion-icon name="arrow-dropright"></ion-icon> {{tipo.type.name}}</ion-item>
-              <ion-list-header class="texto">Debil contra</ion-list-header>
-              <ion-item class="tipos" *ngFor="let debilidad of debilidades">*{{debilidad.name}}</ion-item>
-              <ion-list-header class="texto">Fuerte contra</ion-list-header>
-              <ion-item class="tipos" *ngFor="let fortaleza of fortalezas">*{{fortaleza.name}}</ion-item>
-              <ion-list-header class="texto">Caracteristicas</ion-list-header>
-              <ion-item class="texto"><ion-icon name="arrow-dropright"></ion-icon> Peso: {{peso}}00 g</ion-item>
-              <ion-item class="texto"><ion-icon name="arrow-dropright"></ion-icon> Altura: {{altura}}0 cm</ion-item>
-            </ion-list>
+      </div>
+      <div *ngIf="showShiny">
+        <ion-card-title class="encabezado">&nbsp;&nbsp;&nbsp;Forma Shiny</ion-card-title>
+        <img [attr.src]=imagen_shiny/>
+      </div>
+      <div class="botones">
+        <button ion-button round (click)="showShinyForm()">Forma shiny</button>
+        <button ion-button round (click)="showNormalForm()" >Forma normal</button>
+      </div>
+      <ion-card-content>
+        <ion-card-title class="encabezado">Detalles</ion-card-title>
+
+          <ion-list>
+            <ion-list-header class="texto">Tipo(s)</ion-list-header>
+            <ion-item class="tipos" *ngFor="let tipo of tipos">
+              <ion-icon name="arrow-dropright"></ion-icon> {{tipo.type.name}}
+            </ion-item>
+            <ion-list-header class="texto">Debil contra</ion-list-header>
+            <ion-item class="tipos" *ngFor="let debilidad of debilidades">
+              <ion-icon name="arrow-dropright"></ion-icon> {{debilidad.name}}
+            </ion-item>
+            <ion-list-header class="texto">Fuerte contra</ion-list-header>
+            <ion-item class="tipos" *ngFor="let fortaleza of fortalezas">
+              <ion-icon name="arrow-dropright"></ion-icon> {{fortaleza.name}}
+            </ion-item>
+            <ion-list-header class="texto">Caracteristicas</ion-list-header>
+            <ion-item class="texto">
+              <ion-icon name="arrow-dropright"></ion-icon> Peso: {{peso}}00 g
+            </ion-item>
+            <ion-item class="texto">
+              <ion-icon name="arrow-dropright"></ion-icon> Altura: {{altura}}0 cm
+            </ion-item>
+          </ion-list>
+
         </ion-card-content>
       </ion-card>
 </ion-content>

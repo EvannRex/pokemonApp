@@ -12,6 +12,8 @@ export class PokemonPage {
   peso:any;
   altura:any;
   imagen:any;
+  imagen_shiny:any;
+  showShiny: boolean=false;
   tipos:any;
   fortalezas: any= new Array();
   debilidades: any= new Array();
@@ -31,8 +33,10 @@ export class PokemonPage {
       (response: any) => {
         this.peso= response.weight;
         this.imagen=response.sprites.front_default;
+        this.imagen_shiny=response.sprites.front_shiny;
         this.altura=response.height;
         this.tipos=response['types'];
+
         while(index < this.tipos.length){
           this.pokemonProvider.getImgUrl(this.tipos[index].type.url).subscribe(
             (response2:any)=>{
@@ -53,6 +57,11 @@ export class PokemonPage {
       }, (error) => {
         console.log(error);
       })
-}
-
+    }
+  showShinyForm(){
+    this.showShiny=true;
+  }
+  showNormalForm(){
+    this.showShiny=false;
+  }
 }
