@@ -5,19 +5,31 @@
 </ion-header>
 
 <ion-content padding class="pagina">
-    <ion-card >
-      <div *ngIf="!showShiny">
-        <ion-card-title class="encabezado">&nbsp;&nbsp;&nbsp;Forma normal</ion-card-title>
-        <img [attr.src]=imagen/>
+    <ion-card  >
+      <div padding>
+        <ion-segment  [(ngModel)]="showShiny">
+          <ion-segment-button value="true">
+            Forma Shiny
+          </ion-segment-button>
+          <ion-segment-button value="false">
+            Forma Normal
+          </ion-segment-button>
+        </ion-segment>
       </div>
-      <div *ngIf="showShiny">
-        <ion-card-title class="encabezado">&nbsp;&nbsp;&nbsp;Forma Shiny</ion-card-title>
-        <img [attr.src]=imagen_shiny/>
+      <div [ngSwitch]="showShiny">
+        <ion-list  *ngSwitchDefault="">
+          <ion-item class="imagen">
+              <img [attr.src]="imagen">
+          </ion-item>
+        </ion-list>
+      
+        <ion-list *ngSwitchCase="'true'">
+          <ion-item class="imagen">
+            <img [attr.src]="imagen_shiny">
+          </ion-item>
+        </ion-list>
       </div>
-      <div class="botones">
-        <button ion-button round (click)="showShinyForm()">Forma shiny</button>
-        <button ion-button round (click)="showNormalForm()" >Forma normal</button>
-      </div>
+
       <ion-card-content>
         <ion-card-title class="encabezado">Detalles</ion-card-title>
 

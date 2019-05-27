@@ -11,6 +11,7 @@ import { PrincipalPage } from '../pages/principal/principal';
 import { PokemonProvider } from '../providers/pokemon/pokemon';
 import { PokemonPage } from '../pages/pokemon/pokemon';
 import { HttpClientModule } from '@angular/common/http';
+import { EventProvider } from '../providers/event/event';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PokemonProvider
+    PokemonProvider,
+    EventProvider
   ]
 })
 export class AppModule {}

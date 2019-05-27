@@ -1,5 +1,21 @@
 // http://ionicframework.com/docs/theming/
 
+.spinner{
+    height: 30%;
+    width: 30%;
+}
+.carga{
+    display: flex; 
+    justify-content: space-around;
+    flex-direction: row;
+    color: white;
+    font-weight: bolder;
+    font-size: 17px;
+}
+.loading-wrapper {
+    background-color: crimson !important;
+    box-shadow: none !important;
+}
 
 // App Global Sass
 // --------------------------------------------------

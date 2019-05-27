@@ -11,12 +11,14 @@
 
 <ion-content class="pagina" padding>
 
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let poke of pokemons, let i=index" (click)="goPokemon(poke)">
+    <ion-item class="elemento" *ngFor="let poke of pokemons" (click)="goPokemon(poke)">
       <ion-avatar item-start>
-        <img [attr.src]=pokeImages[pokemons.indexOf(poke)]>
+        <img [attr.src]=prueba.get(poke.name)>
       </ion-avatar>
-      <h2 class="nombre">#{{i+indice+1}} {{poke.name}}</h2>
+      <h2 class="nombre">#{{pokemons.indexOf(poke)+indice+1}} {{poke.name}}</h2>
     </ion-item>
   </ion-list>
+  
 </ion-content>

@@ -8,4 +8,9 @@ page-principal {
     .nombre{
         text-transform: capitalize;
     }
+    .elemento:hover{
+        background-color: crimson;
+        background: crimson;
+    }
+    
 }
